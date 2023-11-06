@@ -1,22 +1,33 @@
 <script setup>
-import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout.vue';
-import { Head } from '@inertiajs/vue3';
+import HeaderComponent from '@/Layouts/HeaderComponent.vue';
+import ListingAddress from '@/Components/ListingAddress.vue'
+import { Head,Link } from '@inertiajs/vue3';
+
+defineProps({
+    listings:Object,
+});
 </script>
 
 <template>
-    <Head title="Dashboard" />
+    <Head title="Listing" />
 
-    <AuthenticatedLayout>
-        <template #header>
-            <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">Dashboard</h2>
-        </template>
-
-        <div class="py-12">
-            <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-                <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
-                    <div class="p-6 text-gray-900 dark:text-gray-100">You're logged in!</div>
+    <HeaderComponent>
+        <div>
+            <div class="py-5 sm:px-6 lg:px-6">
+            <div v-for="listing in listings" :key="listing.id">
+                <div>
+                    <Link :href="route('listing.show',listing.id)">
+                        <ListingAddress :listing="listing" />
+                    </Link>
+                </div>
+                <div>
+                    <Link :href="route('listing.edit',listing.id)">Edit</Link>
+                </div>
+                <div>
+                    <Link :href="route('listing.destroy',listing.id)" method="DELETE" as="button">Delete</Link>
                 </div>
             </div>
         </div>
-    </AuthenticatedLayout>
+        </div>
+    </HeaderComponent>
 </template>
