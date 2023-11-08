@@ -32,11 +32,8 @@ Route::get('/', function () {
 // })->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware(['auth','verified'])->group(function () {
-    Route::get('/dashboard',[ListingController::class,'index'])->name('dashboard');
-
-    Route::get('/listing/{id}/edit',[ListingController::class,'edit'])->name('listing.edit');
-    Route::get('/listing/{id}/show',[ListingController::class,'show'])->name('listing.show');
-    Route::delete('/listing/{id}/delete',[ListingController::class,'destroy'])->name('listing.destroy');
+    
+    Route::resource('listing',ListingController::class);
     
 });
 

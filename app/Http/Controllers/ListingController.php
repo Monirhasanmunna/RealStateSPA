@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Listing;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Redirect;
 use Inertia\Inertia;
 
 class ListingController extends Controller
@@ -14,7 +15,7 @@ class ListingController extends Controller
     public function index()
     {
         $listings = Listing::orderBy("id","DESC")->get();
-        return Inertia::render('Dashboard',['listings'=>$listings]);
+        return Inertia::render('Listing',['listings'=>$listings]);
     }
 
     /**
@@ -22,7 +23,7 @@ class ListingController extends Controller
      */
     public function create()
     {
-        //
+        return inertia::render('ListingCreate');
     }
 
     /**
@@ -30,7 +31,29 @@ class ListingController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'beds'      => 'required',
+            'baths'     => 'required',
+            'area'      => 'required',
+            'city'      => 'required',
+            'code'      => 'required',
+            'street'    => 'required',
+            'street_no' => 'required',
+            'price'     => 'required',
+        ]);
+
+        Listing::create([
+            'beds'      => $request->beds,
+            'baths'      => $request->baths,
+            'area'      => $request->area,
+            'city'      => $request->city,
+            'code'      => $request->code,
+            'street'    => $request->street,
+            'street_no' => $request->street_no,
+            'price'     => $request->price,
+        ]);
+
+        return Redirect(route('listing.index'));
     }
 
     /**
@@ -38,7 +61,8 @@ class ListingController extends Controller
      */
     public function show(string $id)
     {
-        //
+        $listing = Listing::find($id);
+        return inertia::render('ListingDetails',['listing'=>$listing]);
     }
 
     /**
