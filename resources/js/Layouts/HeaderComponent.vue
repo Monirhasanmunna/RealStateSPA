@@ -13,7 +13,7 @@
         </Link>
 
         <div class="flex justify-between space-x-3">
-            <Link href="logout" method="post" as="button" type="button" class="bg-gray-600 text-white p-2 rounded-md hover:bg-gray-500 transition duration-200">Log Out</Link>
+            <Link :href="route('logout')" method="post" as="button" type="button" class="bg-gray-600 text-white p-2 rounded-md hover:bg-gray-500 transition duration-200">Log Out</Link>
         </div>
     </div>
 </template>
