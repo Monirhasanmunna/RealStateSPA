@@ -70,7 +70,8 @@ class ListingController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $listing = Listing::find($id);
+        return inertia::render('ListingEdit',['listing'=>$listing]);
     }
 
     /**
@@ -78,7 +79,29 @@ class ListingController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $request->validate([
+            'beds'      => 'required',
+            'baths'     => 'required',
+            'area'      => 'required',
+            'city'      => 'required',
+            'code'      => 'required',
+            'street'    => 'required',
+            'street_no' => 'required',
+            'price'     => 'required',
+        ]);
+
+        Listing::find($id)->update([
+            'beds'      => $request->beds,
+            'baths'     => $request->baths,
+            'area'      => $request->area,
+            'city'      => $request->city,
+            'code'      => $request->code,
+            'street'    => $request->street,
+            'street_no' => $request->street_no,
+            'price'     => $request->price,
+        ]);
+
+        return Redirect(route('listing.index'));
     }
 
     /**

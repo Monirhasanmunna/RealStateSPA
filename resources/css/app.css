@@ -1,3 +1,14 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+
+@layer components {
+    .box-border {
+        @apply border-2 border-gray-300 border-2 border-gray-300 border-2 border-gray-300;
+    }
+
+    .btn-green {
+        @apply bg-green-500 text-white p-2 rounded-md hover:bg-green-600 transition duration-200;
+    }
+}
