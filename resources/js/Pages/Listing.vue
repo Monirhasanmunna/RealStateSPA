@@ -16,11 +16,11 @@ defineProps({
     <MainLayout>
         
         <div class="flex justify-end ">
-            <Link :href="route('listing.create')" class="bg-green-500 text-white p-2 rounded-md hover:bg-green-600 transition duration-200">+ New Create</Link>
+            <Link :href="route('listing.create')" class="btn-green">+ New Create</Link>
         </div>
 
         <div class="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
-            <div v-for="listing in listings" :key="listing.id" class="border-2 border-gray-300 p-3 ">
+            <div v-for="listing in listings" :key="listing.id" class="box-border p-3 ">
                 <div>
                     <Link :href="route('listing.show',listing.id)">
                         <PriceFormateComponent :price="listing.price" class="font-bold text-xl dark:text-white" />

@@ -14,21 +14,21 @@ defineProps({
 <template>
     <Head title="Listing Details" />
     <MainLayout>
-        <BackButtonComponent title="Listing Show" :href="route('listing.index')" class="flex bg-green-500 text-white p-2 rounded-md hover:bg-green-600 transition duration-200" />
+        <BackButtonComponent title="Listing Show" :href="route('listing.index')" class="flex btn-green" />
         <div>
             <div class="flex flex-col-reverse md:grid md:grid-cols-12 gap-4">
-                <div class="col-span-7 flex items-center w-full border-2 border-gray-300 p-3">
+                <div class="col-span-7 flex items-center w-full box-border p-3">
                     <div class="text-gray-600 font-semibold text-center w-full">No Images</div>
                 </div>
 
                 <div class="md:col-span-5 flex flex-col gap-4">
-                    <div class="border-2 border-gray-300 p-3">
+                    <div class="box-border p-3">
                         <PriceFormateComponent :price="listing.price" class="font-bold text-xl dark:text-white" />
                         <ListingSpaceComponent :listing="listing" />
                         <ListingAddress :listing="listing" />
                     </div>
 
-                    <div class="border-2 border-gray-300 p-3">
+                    <div class="box-border p-3">
                         Make an Offer
                     </div>
                 </div>
