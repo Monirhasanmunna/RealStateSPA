@@ -12,7 +12,7 @@ const props = defineProps({
 });
 
 const interestRate = ref(10);
-const duration = ref(12);
+const duration = ref(10);
 
 //calculation payments monthly from composable folder
 const {monthlyPayment} = useMothlyPayment(props.listing.price, interestRate, duration);
