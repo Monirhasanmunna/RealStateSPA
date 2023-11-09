@@ -15,7 +15,7 @@ class ListingController extends Controller
     public function index()
     {
         $listings = Listing::orderBy("id","DESC")->get();
-        return Inertia::render('Listing',['listings'=>$listings]);
+        return Inertia::render('Listing/Listing',['listings'=>$listings]);
     }
 
     /**
@@ -23,7 +23,7 @@ class ListingController extends Controller
      */
     public function create()
     {
-        return inertia::render('ListingCreate');
+        return inertia::render('Listing/ListingCreate');
     }
 
     /**
@@ -62,7 +62,7 @@ class ListingController extends Controller
     public function show(string $id)
     {
         $listing = Listing::find($id);
-        return inertia::render('ListingDetails',['listing'=>$listing]);
+        return inertia::render('Listing/ListingDetails',['listing'=>$listing]);
     }
 
     /**
@@ -71,7 +71,7 @@ class ListingController extends Controller
     public function edit(string $id)
     {
         $listing = Listing::find($id);
-        return inertia::render('ListingEdit',['listing'=>$listing]);
+        return inertia::render('Listing/ListingEdit',['listing'=>$listing]);
     }
 
     /**

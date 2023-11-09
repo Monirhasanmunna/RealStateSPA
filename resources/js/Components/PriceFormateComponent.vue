@@ -1,17 +1,13 @@
 <script setup>
 import { computed } from 'vue';
+import formatingPrice from '@/Composables/formatePrice.js'
+
 const props = defineProps({
     price : [Number,String],
 });
 
-const formattedPrice = computed(
-    ()=> Number(props.price).toLocaleString("en-Us", { 
-        style: "currency",
-        currency: "USD",
-        maximumFractionDigit:2
-    }),
-);
 
+const {formattedPrice} = formatingPrice(props.price);
 </script>
 
 <template>

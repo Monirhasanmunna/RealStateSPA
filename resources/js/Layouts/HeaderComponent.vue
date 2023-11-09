@@ -3,7 +3,8 @@
 </script>
 
 <template>
- <div class="flex flex-wrap items-center justify-between mx-auto py-4 px-6 shadow-md">
+    <div class="py-4 shadow-md">
+        <div class="md:container md:m-auto flex flex-wrap items-center justify-between mx-auto px-6">
         <Link :href="route('listing.index')" class="flex items-center">
             <span class="self-center text-2xl text-gray-500 font-semibold whitespace-nowrap dark:text-gray-100">Listings</span>
         </Link>
@@ -15,6 +16,7 @@
         <div class="flex justify-between space-x-3">
             <Link :href="route('logout')" method="post" as="button" type="button" class="bg-gray-600 text-white p-2 rounded-md hover:bg-gray-500 transition duration-200">Log Out</Link>
         </div>
+    </div>
     </div>
 </template>
 
