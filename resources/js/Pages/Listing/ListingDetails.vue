@@ -30,27 +30,31 @@ const {monthlyPayment} = useMothlyPayment(props.listing.price, interestRate, dur
                 </div>
 
                 <div class="md:col-span-5 flex flex-col gap-4">
-                    <div class="box-border p-3">
-                        <PriceFormateComponent :price="props.listing.price" class="font-bold text-xl dark:text-white" />
-                        <ListingSpaceComponent :listing="props.listing" />
-                        <ListingAddress :listing="props.listing" />
+                    <div class="box-border p-3 space-y-1">
+                        <h6 class="text-md text-gray-400 font-medium dark:text-gray-600">Basic Info</h6>
+                        <div>
+                            <PriceFormateComponent :price="props.listing.price" class="font-bold text-xl dark:text-gray-400" />
+                            <ListingSpaceComponent :listing="props.listing" />
+                            <ListingAddress :listing="props.listing" class="dark:text-gray-600" />
+                        </div>
+                        
                     </div>
 
                     <div class="box-border p-3 space-y-3">
                         <h6 class="text-md text-gray-400 font-medium dark:text-gray-600">Monthly payment</h6>
                         <div class="space-y-3">
                             <div>
-                                <label class="label">Interest rate ({{ interestRate }}%)</label>
+                                <label class="label dark:text-gray-600">Interest rate ({{ interestRate }}%)</label>
                                 <input type="range" min="0.1" max="30" step="0.1" v-model.number="interestRate" class="w-full h-4 bg-gray-200 rounded-lg appearance-none cursor-pointer dark:bg-gray-700"/>
                             </div>
                             
                             <div>
-                                <label class="label">Duration ({{ duration }} years)</label>
+                                <label class="label dark:text-gray-600">Duration ({{ duration }} years)</label>
                                 <input type="range" min="1" max="35" step="1" v-model.number="duration" class="w-full h-4 bg-gray-200 rounded-lg appearance-none cursor-pointer dark:bg-gray-700" />
                             </div>
                             
                             <div class="text-gray-600 dark:text-gray-300 mt-2">
-                                <div class="text-gray-400">Your monthly payment</div>
+                                <div class="text-gray-600">Your monthly payment</div>
                                 <PriceFormateComponent :price="monthlyPayment" class="text-3xl" />
                             </div>
                         </div>

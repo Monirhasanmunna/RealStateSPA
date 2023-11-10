@@ -1,6 +1,5 @@
 <script setup>
 import useMothlyPayment from '@/Composables/useMonthlyPayment'
-import formatingPrice from '@/Composables/formatePrice.js'
 import PriceFormateComponent from '@/Components/PriceFormateComponent.vue';
 
 const props = defineProps(['listing']);

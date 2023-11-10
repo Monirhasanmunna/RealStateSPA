@@ -3,14 +3,14 @@
 </script>
 
 <template>
-    <div class="py-4 shadow-md">
+    <div class="py-4 shadow-md dark:bg-gray-900 dark:shadow-md dark:shadow-gray-400">
         <div class="md:container md:m-auto flex flex-wrap items-center justify-between mx-auto px-6">
         <Link :href="route('listing.index')" class="flex items-center">
-            <span class="self-center text-2xl text-gray-500 font-semibold whitespace-nowrap dark:text-gray-100">Listings</span>
+            <span class="self-center text-2xl text-gray-500 font-semibold whitespace-nowrap dark:text-gray-300">Listings</span>
         </Link>
 
         <Link :href="route('listing.index')" class="flex items-center">
-            <h1 class="text-xl text-gray-600 font-bold dark:text-gray-100">M Housing</h1>
+            <h1 class="text-xl text-gray-600 font-bold dark:text-gray-300">M Housing</h1>
         </Link>
 
         <div class="flex justify-between space-x-3">

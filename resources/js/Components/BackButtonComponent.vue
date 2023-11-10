@@ -7,7 +7,7 @@
 
 <template>
 <div class="flex justify-between ">
-    <h1 class="text-xl text-gray-500 font-medium dark:text-white">{{ title }}</h1>
+    <h1 class="text-xl text-gray-500 font-medium dark:text-gray-400">{{ title }}</h1>
     <Link :class="class" :href="href"><Icon style="margin-top:2px;" icon="material-symbols:arrow-back" width="20" />Back</Link>
 </div>
 </template>

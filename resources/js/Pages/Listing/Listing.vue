@@ -1,10 +1,10 @@
 <script setup>
-import MainLayout from '@/Layouts/MainLayout.vue';
-import ListingAddress from '@/Components/ListingAddress.vue'
-import ListingSpaceComponent from '@/Components/ListingSpaceComponent.vue';
 import PriceFormateComponent from '@/Components/PriceFormateComponent.vue';
-import ListingMonthlyPayment from '@/Pages/Listing/ListingComponents/ListingMonthlyPayment.vue';
+import MainLayout from '@/Layouts/MainLayout.vue';
 import { Head,Link } from '@inertiajs/vue3';
+import ListingMonthlyPayment from './ListingComponents/ListingMonthlyPayment.vue';
+import ListingSpaceComponent from '@/Components/ListingSpaceComponent.vue';
+import ListingAddress from '@/Components/ListingAddress.vue';
 
 defineProps({
     listings:Array,
@@ -25,19 +25,19 @@ defineProps({
                 <div>
                     <Link :href="route('listing.show',listing.id)">
                         <div class="flex space-x-2">
-                            <PriceFormateComponent :price="listing.price" class="font-bold text-xl dark:text-white" />
+                            <PriceFormateComponent :price="listing.price" class="font-bold text-xl dark:text-gray-400" />
                             <ListingMonthlyPayment :listing="listing" />
                         </div>
                         
-                        <ListingSpaceComponent :listing="listing" />
-                        <ListingAddress :listing="listing" />
+                        <ListingSpaceComponent :listing="listing"  />
+                        <ListingAddress :listing="listing" class="dark:text-gray-500" />
                     </Link>
                 </div>
                 <div>
-                    <Link :href="route('listing.edit',listing.id)">Edit</Link>
+                    <Link :href="route('listing.edit',listing.id)" class="dark:text-gray-500">Edit</Link>
                 </div>
                 <div>
-                    <Link :href="route('listing.destroy',listing.id)" method="DELETE" as="button">Delete</Link>
+                    <Link class="dark:text-gray-500" :href="route('listing.destroy',listing.id)" method="DELETE" as="button">Delete</Link>
                 </div>
             </div>
         </div>
