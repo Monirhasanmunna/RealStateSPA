@@ -109,6 +109,7 @@ class ListingController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        Listing::find($id)->delete();
+        return Redirect(route('listing.index'));
     }
 }

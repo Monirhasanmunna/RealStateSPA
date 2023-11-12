@@ -5,6 +5,7 @@ import ListingSpaceComponent from '@/Components/ListingSpaceComponent.vue';
 import PriceFormateComponent from '@/Components/PriceFormateComponent.vue';
 import BackButtonComponent from '@/Components/BackButtonComponent.vue';
 import {ref, computed} from 'vue';
+import {Head} from '@inertiajs/vue3'
 import useMothlyPayment from '@/Composables/useMonthlyPayment'
 
 const props = defineProps({
