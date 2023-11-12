@@ -10,7 +10,7 @@
         </Link>
 
         <Link :href="route('listing.index')" class="flex items-center">
-            <h1 class="text-xl text-gray-600 font-bold dark:text-gray-300">M Housing</h1>
+            <h1 class="text-xl text-gray-600 font-bold dark:text-gray-300">Real State</h1>
         </Link>
 
         <div class="flex justify-between space-x-3">

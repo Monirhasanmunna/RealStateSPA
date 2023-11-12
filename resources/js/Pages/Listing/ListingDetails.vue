@@ -15,7 +15,7 @@ const interestRate = ref(10);
 const duration = ref(10);
 
 //calculation payments monthly from composable folder
-const {monthlyPayment} = useMothlyPayment(props.listing.price, interestRate, duration);
+const {monthlyPayment, totalPaid, totalInterest} = useMothlyPayment(props.listing.price, interestRate, duration);
 
 </script>
 
@@ -56,6 +56,37 @@ const {monthlyPayment} = useMothlyPayment(props.listing.price, interestRate, dur
                             <div class="text-gray-600 dark:text-gray-300 mt-2">
                                 <div class="text-gray-600">Your monthly payment</div>
                                 <PriceFormateComponent :price="monthlyPayment" class="text-3xl" />
+                            </div>
+
+                            <div class="mt-2 text-gray-500">
+
+                                <div class="flex justify-between">
+                                    <div>
+                                        Total paid
+                                    </div>
+                                    <div>
+                                        <PriceFormateComponent :price="totalPaid" class="font-medium" />
+                                    </div>
+                                </div>
+
+                                <div class="flex justify-between">
+                                    <div>
+                                        Principal paid
+                                    </div>
+                                    <div>
+                                        <PriceFormateComponent :price="listing.price" class="font-medium" />
+                                    </div>
+                                </div>
+
+                                <div class="flex justify-between">
+                                    <div>
+                                        Total Interest
+                                    </div>
+                                    <div>
+                                        <PriceFormateComponent :price="totalInterest" class="font-medium" />
+                                    </div>
+                                </div>
+
                             </div>
                         </div>
                     </div>

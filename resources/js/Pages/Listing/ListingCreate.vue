@@ -20,7 +20,7 @@ const submit = ()=>{
     form.post(route('listing.store'),{
         onSuccess : () => form.reset(),
     });
-}
+};
 
 </script>
 
@@ -30,7 +30,7 @@ const submit = ()=>{
         <BackButtonComponent title="Listing Create" :href="route('listing.index')" class="flex bg-green-500 text-white p-2 rounded-md hover:bg-green-600 transition duration-200" />
         
         <div class="grid grid-cols-1">
-            <ListingCreateForm :form="form" @submit="submit" />
+            <ListingCreateForm :form="form" @submit="submit" :errors="form.errors" />
         </div>
     </MainLayout>
 </template>
