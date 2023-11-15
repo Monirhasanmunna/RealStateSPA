@@ -13,10 +13,39 @@ class ListingController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
-        $listings = Listing::orderBy("id","DESC")->get();
-        return Inertia::render('Listing/Listing',['listings'=>$listings]);
+        $filters = $request->only(['priceFrom','priceTo','beds','baths','areaFrom','areaTo']);
+        $query = Listing::orderByDesc('id');
+
+        if($filters['priceFrom'] ?? false){
+            $query->where('price', '>=' ,$filters['priceFrom']);
+        }
+
+        if($filters['priceTo'] ?? false){
+            $query->where('price', '<=' ,$filters['priceTo']);
+        }
+
+        if($filters['beds'] ?? false){
+            $query->where('beds',$filters['beds']);
+        }
+
+        if($filters['baths'] ?? false){
+            $query->where('baths',$filters['baths']);
+        }
+
+        if($filters['areaFrom'] ?? false){
+            $query->where('area', '>=' ,$filters['areaFrom']);
+        }
+
+        if($filters['areaTo'] ?? false){
+            $query->where('area', '<=' ,$filters['areaTo']);
+        }
+
+        return Inertia::render('Listing/Listing',[
+            'listings'=> $query->paginate(8)->withQueryString(),
+            'filters'=>  $filters,
+        ]);
     }
 
     /**

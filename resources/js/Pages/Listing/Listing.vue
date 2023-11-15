@@ -5,9 +5,12 @@ import { Head,Link } from '@inertiajs/vue3';
 import ListingMonthlyPayment from './ListingComponents/ListingMonthlyPayment.vue';
 import ListingSpaceComponent from '@/Components/ListingSpaceComponent.vue';
 import ListingAddress from '@/Components/ListingAddress.vue';
+import Pagination from './ListingComponents/Pagination.vue';
+import Filter from './ListingComponents/Filter.vue';
 
 defineProps({
-    listings:Array,
+    listings:Object,
+    filters:Object,
 });
 </script>
 
@@ -20,8 +23,10 @@ defineProps({
             <Link :href="route('listing.create')" class="btn-green">+ New Create</Link>
         </div>
 
+        <div>
+            <Filter :filters="filters" />
         <div class="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
-            <div v-for="listing in listings" :key="listing.id" class="box-border p-3 ">
+            <div v-for="listing in listings.data" :key="listing.id" class="box-border p-3 ">
                 <div>
                     <Link :href="route('listing.show',listing.id)">
                         <div class="flex space-x-2">
@@ -41,6 +46,11 @@ defineProps({
                     <Link class="dark:text-gray-500" :href="route('listing.destroy',listing.id)" method="DELETE" as="button">Delete</Link>
                 </div>
             </div>
+        </div>
+        </div>
+        
+        <div v-if="listings.data.length">
+            <Pagination class="mt-20" :links="listings.links"  />
         </div>
     </MainLayout>
 </template>
