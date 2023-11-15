@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Listing;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
 use Inertia\Inertia;
 
@@ -28,7 +29,7 @@ class ListingController extends Controller
 
     /**
      * Store a newly created resource in storage.
-     */
+    */
     public function store(Request $request)
     {
         $request->validate([
@@ -43,8 +44,9 @@ class ListingController extends Controller
         ]);
 
         Listing::create([
+            'user_id'   => Auth::id(),
             'beds'      => $request->beds,
-            'baths'      => $request->baths,
+            'baths'     => $request->baths,
             'area'      => $request->area,
             'city'      => $request->city,
             'code'      => $request->code,
@@ -109,7 +111,9 @@ class ListingController extends Controller
      */
     public function destroy(string $id)
     {
-        Listing::find($id)->delete();
+        $listing = Listing::find($id);
+        $this->authorize('delete',$listing);
+        $listing->delete();
         return Redirect(route('listing.index'));
     }
 }

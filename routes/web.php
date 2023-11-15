@@ -27,14 +27,15 @@ Route::get('/', function () {
     ]);
 });
 
-// Route::get('/dashboard', function () {
-//     return Inertia::render('Dashboard');
-// })->middleware(['auth', 'verified'])->name('dashboard');
 
-Route::middleware(['auth','verified'])->group(function () {
-    
-    Route::resource('listing',ListingController::class);
-    
-});
+
+    Route::get('/listing',[ListingController::class,'index'])->name('listing.index');
+    Route::get('/create',[ListingController::class,'create'])->name('listing.create')->middleware('auth');
+    Route::post('/store',[ListingController::class,'store'])->name('listing.store')->middleware('auth');
+    Route::get('/{id}/show',[ListingController::class,'show'])->name('listing.show');
+    Route::get('/{id}/edit',[ListingController::class,'edit'])->name('listing.edit')->middleware('auth');
+    Route::put('/{id}/update',[ListingController::class,'update'])->name('listing.update')->middleware('auth');
+    Route::delete('/{id}/delete',[ListingController::class,'destroy'])->name('listing.destroy')->middleware('auth');
+
 
 require __DIR__.'/auth.php';

@@ -36,6 +36,7 @@ defineProps({
                 <div>
                     <Link :href="route('listing.edit',listing.id)" class="dark:text-gray-500">Edit</Link>
                 </div>
+
                 <div>
                     <Link class="dark:text-gray-500" :href="route('listing.destroy',listing.id)" method="DELETE" as="button">Delete</Link>
                 </div>
