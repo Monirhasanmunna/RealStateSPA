@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ListingController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\RealtorController;
 use App\Models\Listing;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
@@ -37,5 +38,9 @@ Route::get('/', function () {
     Route::put('/{id}/update',[ListingController::class,'update'])->name('listing.update')->middleware('auth');
     Route::delete('/{id}/delete',[ListingController::class,'destroy'])->name('listing.destroy')->middleware('auth');
 
+
+    Route::group(['as'=>'realtor.', 'prefix'=>'realtor','middleware'=>['auth']],function(){
+        Route::get('/',[RealtorController::class,'listing'])->name('listing');
+    });
 
 require __DIR__.'/auth.php';

@@ -19,8 +19,8 @@
             </Link>
 
             <div v-if="user" class="flex justify-between space-x-3 ">
-                <h3 class="text-gray-600 dark:text-gray-400 p-1">{{ user?.name }}</h3>
-                <Link :href="route('logout')" method="post" as="button" type="button" class="text-gray-600 bg-gray-600 p-1 px-2 rounded dark:text-gray-300">Logout</Link>
+                <Link :href="route('realtor.listing')" class="text-gray-600 dark:text-gray-400 p-1">{{ user?.name }}</Link>
+                <Link :href="route('logout')" method="post" as="button" type="button" class="text-gray-200 bg-gray-600 p-1 px-2 rounded dark:text-gray-300">Logout</Link>
             </div>
 
             <div v-else>
