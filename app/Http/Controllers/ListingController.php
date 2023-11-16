@@ -16,34 +16,12 @@ class ListingController extends Controller
     public function index(Request $request)
     {
         $filters = $request->only(['priceFrom','priceTo','beds','baths','areaFrom','areaTo']);
-        $query = Listing::orderByDesc('id');
 
-        if($filters['priceFrom'] ?? false){
-            $query->where('price', '>=' ,$filters['priceFrom']);
-        }
-
-        if($filters['priceTo'] ?? false){
-            $query->where('price', '<=' ,$filters['priceTo']);
-        }
-
-        if($filters['beds'] ?? false){
-            $query->where('beds',$filters['beds']);
-        }
-
-        if($filters['baths'] ?? false){
-            $query->where('baths',$filters['baths']);
-        }
-
-        if($filters['areaFrom'] ?? false){
-            $query->where('area', '>=' ,$filters['areaFrom']);
-        }
-
-        if($filters['areaTo'] ?? false){
-            $query->where('area', '<=' ,$filters['areaTo']);
-        }
+        //use local scope
+        $query = Listing::orderByDesc('id')->FiltersQuery($filters)->paginate(8)->withQueryString();
 
         return Inertia::render('Listing/Listing',[
-            'listings'=> $query->paginate(8)->withQueryString(),
+            'listings'=> $query,
             'filters'=>  $filters,
         ]);
     }
