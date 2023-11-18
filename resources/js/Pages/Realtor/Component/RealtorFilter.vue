@@ -50,7 +50,6 @@
 
 const sortOptions = computed(() => sortLabels[filterForm.by])
 
-
 </script>
 
 <template>
