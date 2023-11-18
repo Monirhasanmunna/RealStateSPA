@@ -13,6 +13,7 @@ const props = defineProps({
     listing:Object,
 });
 
+
 const interestRate = ref(10);
 const duration = ref(10);
 
