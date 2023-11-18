@@ -24,6 +24,7 @@ return new class extends Migration
             $table->string('street_no');
 
             $table->unsignedBigInteger('price');
+            $table->softDeletes();
             $table->timestamps();
         });
     }

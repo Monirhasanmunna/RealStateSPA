@@ -9,8 +9,8 @@
 <div class="flex justify-center space-x-1">
     <Link
     v-for="(link, index) in links" :key="index" 
-    class="bg-green-400 p-2 px-4 rounded"
-    :class="{'bg-green-600 text-gray-200' : link.active}"
+    class=" p-2 px-4 rounded dark:text-gray-300"
+    :class="{'bg-indigo-600 text-gray-200' : link.active}"
     :href="link.url"
     v-html="link.label"
     >

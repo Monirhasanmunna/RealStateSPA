@@ -41,6 +41,7 @@ Route::get('/', function () {
 
     Route::group(['as'=>'realtor.', 'prefix'=>'realtor','middleware'=>['auth']],function(){
         Route::get('/',[RealtorController::class,'listing'])->name('listing');
+        Route::get('/{listing}/show',[RealtorController::class,'show'])->name('listing.show');
     });
 
 require __DIR__.'/auth.php';
