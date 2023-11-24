@@ -6,7 +6,8 @@ import PriceFormateComponent from '@/Components/PriceFormateComponent.vue';
 import MainLayout from '@/Layouts/MainLayout.vue';
 import { Link, Head } from '@inertiajs/vue3';
 import RealtorFilter from '@/Pages/Realtor/Component/RealtorFilter.vue';
-import Pagination from '../Listing/ListingComponents/Pagination.vue';
+import Pagination from '@/Pages/Listing/ListingComponents/Pagination.vue';
+
 
 defineProps({
     listings:Object,
@@ -36,8 +37,8 @@ defineProps({
                 </div>
                 <div class="flex items-center gap-1 text-gray-600 dark:text-gray-300">
                 <a target="__blank" :href="route('realtor.listing.show',{listing:listing.id})" class="btn-outline text-xs font-medium">Preview</a>
-                <Link href="#" class="btn-outline text-xs font-medium">Edit</Link>
-                <Link href="#" class="btn-outline text-xs font-medium">Delete</Link>
+                <Link :href="route('realtor.listing.edit',{listing:listing.id})" as="button" type="button" class="btn-outline text-xs font-medium">Edit</Link>
+                <Link :href="route('realtor.listing.destroy',{listing:listing.id})" method="delete" as="button" type="button" class="btn-outline text-xs font-medium">Delete</Link>
                 </div>
             </div>
             </div>
