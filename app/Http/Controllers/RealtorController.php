@@ -27,7 +27,7 @@ class RealtorController extends Controller
 
     public function show($listing)
     {
-        $listing = Listing::find($listing);
+        $listing = Listing::find($listing)->load(['images']);
         return inertia('Realtor/ListingDetails',[
             'listing'=>$listing
         ]);

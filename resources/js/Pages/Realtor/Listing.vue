@@ -37,7 +37,7 @@ defineProps({
                 </div>
                 <section>
                     <div class="flex items-center gap-1 text-gray-600 dark:text-gray-300">
-                        <a target="__blank" :href="route('realtor.listing.show',{listing:listing.id})" class="btn-outline text-xs font-medium">Preview</a>
+                        <Link :href="route('realtor.listing.show',{listing:listing.id})" class="btn-outline text-xs font-medium">Preview</Link>
                         <Link :href="route('realtor.listing.edit',{listing:listing.id})" as="button" type="button" class="btn-outline text-xs font-medium">Edit</Link>
                         <Link :href="route('realtor.listing.destroy',{listing:listing.id})" method="delete" as="button" type="button" class="btn-outline text-xs font-medium">Delete</Link>
                     </div>

@@ -70,7 +70,8 @@ class ListingController extends Controller
      */
     public function show(string $id)
     {
-        $listing = Listing::find($id);
+        $listing = Listing::find($id)->load(['images']);
+
         return inertia::render('Listing/ListingDetails',['listing'=>$listing]);
     }
 
