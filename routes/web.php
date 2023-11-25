@@ -3,6 +3,7 @@
 use App\Http\Controllers\ListingController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\RealtorController;
+use App\Http\Controllers\RealtorListingImageController;
 use App\Models\Listing;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
@@ -45,6 +46,10 @@ Route::get('/', function () {
         Route::get('/{listing}/edit',[RealtorController::class,'edit'])->name('listing.edit');
         Route::put('/{listing}/update',[RealtorController::class,'update'])->name('listing.update');
         Route::delete('/{listing}/delete',[RealtorController::class,'destroy'])->name('listing.destroy');
+
+        Route::resource('listing.image', RealtorListingImageController::class)->only(['create','store','destroy']);
     });
+
+    
 
 require __DIR__.'/auth.php';
