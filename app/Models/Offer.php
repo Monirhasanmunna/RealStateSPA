@@ -10,7 +10,7 @@ class Offer extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['ammount','accepted_at','rejected_at'];
+    protected $fillable = ['ammount','user_id','accepted_at','rejected_at'];
 
     
     public function listing() :BelongsTo
@@ -18,7 +18,7 @@ class Offer extends Model
         return $this->belongsTo(Listing::class);
     }
 
-    public function user() :BelongsTo
+    public function bidder() :BelongsTo
     {
         return $this->belongsTo(User::class);
     }

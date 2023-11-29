@@ -5,9 +5,12 @@ import ListingSpaceComponent from '@/Components/ListingSpaceComponent.vue';
 import PriceFormateComponent from '@/Components/PriceFormateComponent.vue';
 import BackButtonComponent from '@/Components/BackButtonComponent.vue';
 import {ref, computed} from 'vue';
-import {Head} from '@inertiajs/vue3'
+import {Head,usePage} from '@inertiajs/vue3'
 import useMothlyPayment from '@/Composables/useMonthlyPayment'
 import MakeOffer from './Show/Components/MakeOffer.vue';
+
+const page = usePage();
+const user = computed(()=> page.props.auth.user);
 
 const props = defineProps({
     listing:Object,
@@ -96,7 +99,7 @@ const {monthlyPayment, totalPaid, totalInterest} = useMothlyPayment(props.listin
                         </div>
                     </div>
 
-                    <MakeOffer :listing="listing" />
+                    <MakeOffer v-if="user" :listing="listing" />
                 </div>
             </div>
         </div>

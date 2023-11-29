@@ -15,17 +15,21 @@ const difference = computed(()=> form.ammount - props.listing.price)
 const min = computed(()=> Math.round(props.listing.price / 2));
 const max = computed(()=> Math.round(props.listing.price * 2));
 
-
-
+const offerSubmit = ()=>{
+  form.post(route('listing.offer.store', props.listing.id),{
+    preserveScroll : true,
+    preserveState : true
+  });
+}
 
 </script>
 
 <template>
     <div class="border-box" >
       <div>
-        <form>
+        <form @submit.prevent="offerSubmit">
             <div class="text-gray-600">Make an offer</div>
-            <input v-model.number="form.ammount" type="text" class="w-full border-gray-400" />
+            <input v-model.number="form.ammount" type="text" class="w-full border-gray-400 rounded-md" />
             <input
             v-model.number="form.ammount"
             type="range" :min="min"

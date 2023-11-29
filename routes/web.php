@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ListingController;
+use App\Http\Controllers\ListingOfferController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\RealtorController;
 use App\Http\Controllers\RealtorListingImageController;
@@ -38,6 +39,7 @@ Route::get('/', function () {
     Route::get('/{id}/edit',[ListingController::class,'edit'])->name('listing.edit')->middleware('auth');
     Route::put('/{id}/update',[ListingController::class,'update'])->name('listing.update')->middleware('auth');
     Route::delete('/{id}/delete',[ListingController::class,'destroy'])->name('listing.destroy')->middleware('auth');
+    Route::resource('listing.offer', ListingOfferController::class)->middleware('auth')->only(['store']);
 
 
     Route::group(['as'=>'realtor.', 'prefix'=>'realtor','middleware'=>['auth']],function(){
