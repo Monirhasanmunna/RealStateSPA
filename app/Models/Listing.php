@@ -52,4 +52,9 @@ class Listing extends Model
     {
         return $this->HasMany(ListingImage::class,'listing_id');
     }
+
+    public function offers() :HasMany
+    {
+        return $this->hasMany(Offer::class);
+    }
 }
