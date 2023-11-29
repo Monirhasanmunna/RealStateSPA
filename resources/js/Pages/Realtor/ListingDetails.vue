@@ -30,7 +30,7 @@ const {monthlyPayment, totalPaid, totalInterest} = useMonthlyPayment(props.listi
             <div class="flex flex-col-reverse md:grid md:grid-cols-12 gap-4">
                 <div class="col-span-7 flex items-center w-full box-border p-3">
                     <div v-if="listing.images.length" class="grid grid-cols-2 gap-1">
-                        <img v-for="image in listing.images" :key="image.id" :src="image.src" alt="">
+                        <img class="h-full" v-for="image in listing.images" :key="image.id" :src="image.src" alt="">
                     </div>
                     <div v-else class="text-gray-600 font-semibold text-center w-full">No Images</div>
                 </div>

@@ -16,7 +16,7 @@ class RealtorController extends Controller
             ... $request->only(['by','order']),
         ];
 
-       $listings = Auth::user()->listings()->FiltersQuery($filters)->paginate(5)->withQueryString();
+       $listings = Auth::user()->listings()->with(['images'])->FiltersQuery($filters)->paginate(5)->withQueryString();
 
         return Inertia::render('Realtor/Listing',[
             'listings' => $listings,

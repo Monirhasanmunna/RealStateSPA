@@ -20,8 +20,13 @@ class RealtorListingImageController extends Controller
 
     public function store(Request $request, Listing $listing)
     {
-        if($request->hasFile('images')){
+        $request->validate([
+            'images.*' => 'mimes:jpeg,png,jpeg|max:5000'
+        ],[
+            'images.*.mimes' => 'The file should be in one of the formate: jpeg,png,jpg',
+        ]);
 
+        if($request->hasFile('images')){
             foreach ($request->file('images') as $key => $image) {
                $path = $image->store('images','public');
 
