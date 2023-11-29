@@ -12,15 +12,18 @@ import MakeOffer from './Show/Components/MakeOffer.vue';
 const page = usePage();
 const user = computed(()=> page.props.auth.user);
 
+
 const props = defineProps({
     listing:Object,
 });
+
+const price = ref(props.listing.price)
 
 const interestRate = ref(10);
 const duration = ref(10);
 
 //calculation payments monthly from composable folder
-const {monthlyPayment, totalPaid, totalInterest} = useMothlyPayment(props.listing.price, interestRate, duration);
+const {monthlyPayment, totalPaid, totalInterest} = useMothlyPayment(price, interestRate, duration);
 
 </script>
 
@@ -99,7 +102,7 @@ const {monthlyPayment, totalPaid, totalInterest} = useMothlyPayment(props.listin
                         </div>
                     </div>
 
-                    <MakeOffer v-if="user" :listing="listing" />
+                    <MakeOffer v-if="user" :listing="listing" @price-update="price = $event"  />
                 </div>
             </div>
         </div>

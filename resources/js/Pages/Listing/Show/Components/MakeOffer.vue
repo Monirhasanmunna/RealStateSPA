@@ -1,11 +1,14 @@
 <script setup>
 import PriceFormateComponent from '@/Components/PriceFormateComponent.vue';
-import {computed} from 'vue'
+import {computed, watch} from 'vue'
 import { useForm } from '@inertiajs/vue3';
+import {debounce} from 'lodash'
 
 const props = defineProps({
     listing : Object,
 });
+
+const emit = defineEmits(['priceUpdate']);
 
 const form = useForm({
     ammount : props.listing.price
@@ -14,13 +17,15 @@ const form = useForm({
 const difference = computed(()=> form.ammount - props.listing.price)
 const min = computed(()=> Math.round(props.listing.price / 2));
 const max = computed(()=> Math.round(props.listing.price * 2));
-
+ 
 const offerSubmit = ()=>{
   form.post(route('listing.offer.store', props.listing.id),{
     preserveScroll : true,
     preserveState : true
   });
 }
+
+watch(()=> form.ammount, (value)=> emit('priceUpdate',value));
 
 </script>
 
