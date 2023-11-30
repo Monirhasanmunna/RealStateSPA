@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AcceptOfferController;
 use App\Http\Controllers\ListingController;
 use App\Http\Controllers\ListingOfferController;
 use App\Http\Controllers\ProfileController;
@@ -40,7 +41,7 @@ Route::get('/', function () {
     Route::put('/{id}/update',[ListingController::class,'update'])->name('listing.update')->middleware('auth');
     Route::delete('/{id}/delete',[ListingController::class,'destroy'])->name('listing.destroy')->middleware('auth');
     Route::resource('listing.offer', ListingOfferController::class)->middleware('auth')->only(['store']);
-
+    Route::put('/listing/offer/{offer}/accept', AcceptOfferController::class)->middleware('auth')->name('offer.accept');
 
     Route::group(['as'=>'realtor.', 'prefix'=>'realtor','middleware'=>['auth']],function(){
         Route::get('/',[RealtorController::class,'listing'])->name('listing');

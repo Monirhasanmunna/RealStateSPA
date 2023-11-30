@@ -29,4 +29,9 @@ class Offer extends Model
     {
         return $query->where('user_id', Auth::id());
     }
+
+    public function scopeAccept(Builder $query, Offer $offer) : Builder
+    {
+        return  $query->where('id' ,'!=', $offer->id);
+    }
 }

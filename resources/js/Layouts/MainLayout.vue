@@ -17,7 +17,7 @@ import { usePage } from '@inertiajs/vue3';
             <h6 class="text-sm text-semibould text-white mt-1">{{ message }}</h6>
             <button @click="$page.props.flash.message = ''" class="text-white border px-2 cursor-pointer">x</button>
         </div>
-        <div class="py-5 px- space-y-6">
+        <div class="py-5 px-5 space-y-6">
         <slot/>
         </div>
     </div>

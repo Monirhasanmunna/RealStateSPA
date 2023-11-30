@@ -21,17 +21,16 @@ const hasOrders = computed(() => props.listing.offers.length)
             👈 Go back to Listing</Link>
         </div>
         <div>
-            <section class="flex flex-col-reverse md:grid md:grid-cols-12 gap-4 ">
+        <section class="flex flex-col-reverse md:grid md:grid-cols-12 gap-4 ">
             <div v-if="!hasOrders" class="box-border flex md:col-span-7 items-center">
                 <div class="w-full text-center font-medium text-gray-500">
                     No offers
                 </div>
             </div>
 
-            <div v-else="!hasOrders" class="flex md:col-span-7 items-center">
+            <div v-else="!hasOrders" class="md:flex md:col-span-7 items-center gap-2">
                 <OffersComponent v-for="(offer, index) in listing.offers" :key="index" :offer="offer" :listing-price="listing.price" class="mb-4 w-full" />
             </div>
-
 
             <div class="box-border md:col-span-5 p-3">
                 <PriceFormateComponent :price="listing.price" class="text-xl font-bold dark:text-gray-200" />

@@ -14,7 +14,7 @@ const madeOn = computed(()=> new Date(props.offer.created_at).toDateString() )
 </script>
 
 <template>
-    <div class="box-border p-3">
+    <div class="box-border p-3 ">
         <div>
             <section class="flex item-center justify-between">
                 <div class="text-lef">
@@ -33,7 +33,7 @@ const madeOn = computed(()=> new Date(props.offer.created_at).toDateString() )
                     </div>
                 </div>
                 <div>
-                    <Link class="btn-outline text-xs font-medium dark:text-white" as="button">Accept</Link>
+                    <Link :href="route('offer.accept',{offer:offer.id})" class="btn-outline text-xs font-medium dark:text-white" as="button" method="put">Accept</Link>
                 </div>
             </section>
         </div>
