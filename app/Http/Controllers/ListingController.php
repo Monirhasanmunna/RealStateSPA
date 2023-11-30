@@ -18,7 +18,11 @@ class ListingController extends Controller
         $filters = $request->only(['priceFrom','priceTo','beds','baths','areaFrom','areaTo']);
 
         //use local scope
-        $query = Listing::orderByDesc('id')->FiltersQuery($filters)->paginate(8)->withQueryString();
+        $query = Listing::orderByDesc('id')
+                ->WithoutSold()
+                ->FiltersQuery($filters)
+                ->paginate(8)
+                ->withQueryString();
 
         return Inertia::render('Listing/Listing',[
             'listings'=> $query,

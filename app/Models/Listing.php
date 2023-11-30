@@ -48,6 +48,15 @@ class Listing extends Model
         ); 
     }
 
+    public function scopeWithoutSold(Builder $query) : Builder
+    {
+        return $query->doesntHave('offers')
+                ->orWhereHas('offers',
+                 fn(Builder $query) => $query->whereNull('accepted_at')
+                ->whereNull('rejected_at')
+            );
+    }
+
 
     public function images()
     {
