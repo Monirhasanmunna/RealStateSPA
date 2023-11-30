@@ -28,15 +28,19 @@ const hasOrders = computed(() => props.listing.offers.length)
                 </div>
             </div>
 
-            <div v-else="!hasOrders" class="md:flex md:col-span-7 items-center gap-2">
+            <div v-else="!hasOrders" class="flex md:col-span-7 flex-col">
                 <OffersComponent v-for="(offer, index) in listing.offers" :key="index" :offer="offer" :listing-price="listing.price" class="mb-4 w-full" />
             </div>
 
-            <div class="box-border md:col-span-5 p-3">
-                <PriceFormateComponent :price="listing.price" class="text-xl font-bold dark:text-gray-200" />
-                <ListingSpaceComponent :listing="listing" class="text-lg" />
-                <ListingAddress :listing="listing" class="text-gray-500" />
-            </div> 
+            <div class="md:col-span-5">
+                <div class="box-border p-3">
+                    <h6 class="text-md text-gray-400 font-medium dark:text-gray-600">Basic Info</h6>
+                    <PriceFormateComponent :price="listing.price" class="text-xl font-bold dark:text-gray-200" />
+                    <ListingSpaceComponent :listing="listing" class="text-lg" />
+                    <ListingAddress :listing="listing" class="text-gray-500" />
+                </div>
+            </div>
+             
 
         </section>
         </div>
