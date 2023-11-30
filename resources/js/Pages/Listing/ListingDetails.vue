@@ -8,6 +8,7 @@ import {ref, computed} from 'vue';
 import {Head,usePage} from '@inertiajs/vue3'
 import useMothlyPayment from '@/Composables/useMonthlyPayment'
 import MakeOffer from './Show/Components/MakeOffer.vue';
+import OfferMade from './Show/Components/OfferMade.vue';
 
 const page = usePage();
 const user = computed(()=> page.props.auth.user);
@@ -15,6 +16,7 @@ const user = computed(()=> page.props.auth.user);
 
 const props = defineProps({
     listing:Object,
+    madeOffer: Object,
 });
 
 const price = ref(props.listing.price)
@@ -102,7 +104,8 @@ const {monthlyPayment, totalPaid, totalInterest} = useMothlyPayment(price, inter
                         </div>
                     </div>
 
-                    <MakeOffer v-if="user" :listing="listing" @price-update="price = $event"  />
+                    <MakeOffer v-if="user && !madeOffer" :listing="listing" @price-update="price = $event"  />
+                    <OfferMade v-if="user && madeOffer" :offer="madeOffer" />
                 </div>
             </div>
         </div>

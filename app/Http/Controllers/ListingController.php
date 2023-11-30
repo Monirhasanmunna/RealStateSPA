@@ -70,9 +70,16 @@ class ListingController extends Controller
      */
     public function show(string $id)
     {
-        $listing = Listing::find($id)->load(['images']);
+        $listing = Listing::find($id);
+        $listing = $listing->load(['images']);
+        $madeOffer = !Auth::user() ? null : $listing->offers()->byMe()->first();
+        // dd($madeOffer);
 
-        return inertia::render('Listing/ListingDetails',['listing'=>$listing]);
+        return inertia::render('Listing/ListingDetails',
+        [
+            'listing'=>$listing,
+            'madeOffer' => $madeOffer,
+        ]);
     }
 
     /**

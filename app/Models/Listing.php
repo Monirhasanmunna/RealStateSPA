@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Support\Facades\Auth;
 
 class Listing extends Model
 {
@@ -57,4 +58,5 @@ class Listing extends Model
     {
         return $this->hasMany(Offer::class);
     }
+
 }
