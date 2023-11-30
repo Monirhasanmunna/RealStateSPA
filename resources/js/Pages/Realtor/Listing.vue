@@ -41,8 +41,9 @@ defineProps({
                         <Link :href="route('realtor.listing.edit',{listing:listing.id})" as="button" type="button" class="btn-outline text-xs font-medium">Edit</Link>
                         <Link :href="route('realtor.listing.destroy',{listing:listing.id})" method="delete" as="button" type="button" class="btn-outline text-xs font-medium">Delete</Link>
                     </div>
-                    <div class="mt-2">
-                        <Link :href="route('realtor.listing.image.create',{listing:listing.id})" class="block w-full btn-outline text-xs font-medium text-center">Images ({{ listing.images.length }})</Link>
+                    <div class="mt-2 space-y-2">
+                        <Link :href="route('realtor.listing.image.create',{listing:listing.id})" class="block w-full btn-outline text-xs font-medium text-center dark:text-white">Images ({{ listing.images_count }})</Link>
+                        <Link :href="route('realtor.listing.offer.show',{listing:listing.id})" class="block w-full btn-outline text-xs font-medium text-center dark:text-white">Offers ({{ listing.offers_count }})</Link>
                     </div>
                 </section>
             </div>

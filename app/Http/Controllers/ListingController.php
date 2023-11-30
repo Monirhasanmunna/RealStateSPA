@@ -73,7 +73,6 @@ class ListingController extends Controller
         $listing = Listing::find($id);
         $listing = $listing->load(['images']);
         $madeOffer = !Auth::user() ? null : $listing->offers()->byMe()->first();
-        // dd($madeOffer);
 
         return inertia::render('Listing/ListingDetails',
         [

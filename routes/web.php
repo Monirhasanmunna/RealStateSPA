@@ -45,6 +45,7 @@ Route::get('/', function () {
     Route::group(['as'=>'realtor.', 'prefix'=>'realtor','middleware'=>['auth']],function(){
         Route::get('/',[RealtorController::class,'listing'])->name('listing');
         Route::get('/{listing}/show',[RealtorController::class,'show'])->name('listing.show');
+        Route::get('/offer/{listing}/show',[RealtorController::class,'offersShow'])->name('listing.offer.show');
         Route::get('/{listing}/edit',[RealtorController::class,'edit'])->name('listing.edit');
         Route::put('/{listing}/update',[RealtorController::class,'update'])->name('listing.update');
         Route::delete('/{listing}/delete',[RealtorController::class,'destroy'])->name('listing.destroy');
