@@ -40,7 +40,7 @@ class RealtorController extends Controller
 
     public function offersShow($listing)
     {
-        $listing = Listing::find($listing)->load(['offers']);
+        $listing = Listing::find($listing)->load(['offers','offers.bidder']);
         
         return inertia('Realtor/Offer',[
             'listing'=>$listing

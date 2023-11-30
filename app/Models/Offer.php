@@ -22,7 +22,7 @@ class Offer extends Model
 
     public function bidder() :BelongsTo
     {
-        return $this->belongsTo(User::class);
+        return $this->belongsTo(User::class,'user_id');
     }
 
     public function scopeByMe(Builder $query) :Builder

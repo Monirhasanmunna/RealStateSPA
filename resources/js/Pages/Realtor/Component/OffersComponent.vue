@@ -17,14 +17,15 @@ const madeOn = computed(()=> new Date(props.offer.created_at).toDateString() )
     <div class="box-border p-3">
         <div>
             <section class="flex item-center justify-between">
-                <div class="text-left">
+                <div class="text-lef">
+                    
                     <PriceFormateComponent :price="offer.ammount" class="text-xl dark:text-white" />
                     <div class="text-gray-500">
                         Difference <PriceFormateComponent :price="different" />
                     </div>
 
                     <div class="text-gray-500 text-sm">
-                        Made by john doe
+                        Made by {{ offer.bidder.name }}
                     </div>
 
                     <div class="text-gray-500 text-sm">
